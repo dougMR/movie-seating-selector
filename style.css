@@ -39,9 +39,12 @@ select, button {
 #seats {
     display: inline-block;
     margin: 3rem;
+    margin-bottom:0;
+    padding: 1rem 0 2rem;
     background-color: white;
-    box-shadow: 0 0 2rem 2.5rem white;
-    border-radius: 1rem;
+    box-shadow: 0 0 1rem 1.5rem white;
+    border-top-left-radius: 0.5rem;
+    border-top-right-radius: 0.5rem;
 }
 div.row {
     margin: 0;

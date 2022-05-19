@@ -35,7 +35,7 @@ const seatsInterface = document.getElementById("seating-interface");
 const buyInterface = document.getElementById("buy-tickets");
 const screen = document.getElementById("screen");
 
-let options = "<option></option>";
+let options = "<option>select movie</option>";
 
 for (const [key, value] of Object.entries(movies)) {
     options += `<option value="${key}">${key} ($${value.price})</option>`;
