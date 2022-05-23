@@ -1,33 +1,47 @@
 :root {
     --red: rgb(149, 43, 61);
+    --light-blue: rgb(184, 218, 255);
+}
+body, html {
+    /* height: 100%; */
+    padding: 0;
+    margin: 0;
 }
 body {
-    font-family: 'Nobile', sans-serif;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     text-align: center;
     background-image: url(./theater-curtains.jpg);
     background-position: top center;
     background-size: cover;
     background-repeat: no-repeat;
-    /* background-blend-mode:lighten; */
-    background-color: black;    
+    
+    /* background-blend-mode:screen; */
+    background-color: black; 
+    font-family: 'Nobile', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 body>h1 {
     font-family: 'Limelight', cursive;
 }
 body>h1, body>p {
     color: gold;
-    text-shadow: 0 0 0.5em black;
+    text-shadow: 0 0 0.8em black, 0 0 0.5em black, 0 0 0.2em black;
+}
+p {
+    padding-left: 1rem;
+    padding-right: 1rem;
 }
 select {
     font-size: 1.1rem;
-    font-weight: bold;
-    color: var(--red);
-    border-radius: 0.2em;
-    padding: 0.1em 0.3em;
-}
+    /* font-weight: bold; */
+    color: gold;
+    border-radius: 0.3em;
+    background-color: black;
+    border: 3px solid black;
+    padding: 0.2em 1em 0.2em 0.3em;
+    margin: 0;
+  }
 select, button {
     font-family: sans-serif;
 }
@@ -38,11 +52,10 @@ select, button {
 }
 #seats {
     display: inline-block;
-    margin: 3rem;
-    margin-bottom:0;
-    padding: 1rem 0 2rem;
+    margin: 3rem 1rem 0;
+    padding: 1rem 0.5rem 3rem;
     background-color: white;
-    box-shadow: 0 0 1rem 1.5rem white;
+    box-shadow: 0 0 1rem 1.5rem white, 0 0 2rem 2rem black;
     border-top-left-radius: 0.5rem;
     border-top-right-radius: 0.5rem;
 }
@@ -51,6 +64,7 @@ div.row {
     padding: 0;
 }
 .seat {
+    font-weight: bold;
     display: inline-block;
     margin: 0;
     padding: 0.1rem;
@@ -66,30 +80,47 @@ div.row {
 }
 .seat.selected {
     color: blue;
+    text-shadow: 0 0 0.5em rgb(192, 228, 255);
 }
 #screen {
     display: none;
+    font-size: 0.8rem;
     font-weight: bold;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
-    border: 3px solid white;
-    padding: 1rem 7rem;
-    background-color: rgb(233, 218, 218);
+    /* border: 3px solid white; */
+    padding: 1rem 8rem;
+    background-color: var(--light-blue);
+    box-shadow: inset 0 0 0.5rem 0.3rem white, 0 -0.1rem 1rem black;
     color: #333;
 }
 #buy-tickets {
     visibility: hidden;
 }
 #buy-tickets p {
-    color: gold
+    color: gold;
+}
+#buy-tickets .checkout-variables {
+    font-size:1.3em; 
+    color: white;
+    text-shadow: 0 0 0.2em red, 0 0.1em 0.5em red;
 }
 #buy-tickets button {
     background-color: var(--red);
     color: white;
     padding: 0.5em 0.85em;
-    border: none;
+    border: 2px solid gold;
     border-radius: 0.5em;
 }
 #buy-tickets button:hover {
     background-color: rgb(207, 0, 35);
+}
+
+@media (max-width: 356px){
+    .seat {
+        font-size: calc(1rem + 1.4vw);
+    }
+    #screen {
+        padding: 1rem 6rem;
+    }
 }

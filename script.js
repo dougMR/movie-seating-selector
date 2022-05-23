@@ -1,11 +1,10 @@
 /*
 I thought I was simplifying the app by not making it rebuild all the seats when one is selected / deselected.  Instead, I just toggled a .selected class for the seat.
 
-BUT keeping track of numSelectedSeats, and when to show/hide checkout wound up adding many many lines of code, and required additional elements in the html page.  
+BUT keeping track of numSelectedSeats, and when to show/hide checkout wound up adding many lines of code, and required additional elements in the html page.  
 
 In the end, it was probably simpler to rebuild the seats with each change.
-
-In fact, even with my approach of avoiding re-creating the seat elements, I ended up rebuilding the seats from the checkout() function.  I realized that after changing a seat's .selected to false and .occupied to true, I couldn't change the seat element because I had no reference to it in the checkout() function.  I would have to give each seat object a reference to it's corresponding html element, which would have to be redone each time the seats elements were re-created.  
+ 
 */
 
 // movies and their prices in an object
@@ -54,13 +53,14 @@ movieSelector.addEventListener("change", (event) => {
 });
 
 const generateSeats = () => {
+    // create seat objects for movie object
     for (const movie of Object.values(movies)) {
         for (let row = 0; row < 8; row++) {
             // add a row
             let newRow = [];
             for (let col = 0; col < 8; col++) {
                 // make a seat
-                newRow.push({ occupied: Math.random() < 0.5, selected: false });
+                newRow.push({ occupied: Math.random() < 0.5, selected: false, row, col });
             }
             movie.seats.push(newRow);
         }
@@ -105,12 +105,13 @@ const seatClicked = (event) => {
 };
 
 const showCheckout = () => {
+    // shows or hides checkout
     if (numSelectedSeats > 0) {
         document.getElementById(
             "message"
-        ).innerHTML = `You have <span style="font-size:1.3em;">${numSelectedSeats}</span> seat${
+        ).innerHTML = `You have <span class="checkout-variables">${numSelectedSeats}</span> seat${
             numSelectedSeats > 1 ? "s" : ""
-        } selected for a total of <span style="font-size:1.3em;">$${
+        } selected for a total of <span class="checkout-variables">$${
             numSelectedSeats * movies[selectedMovie].price
         }</span>`;
     }
@@ -118,15 +119,21 @@ const showCheckout = () => {
 }
 
 const checkout = () => {
+    // set selected seats as occupied
 	for (const row of movies[selectedMovie].seats) {
-		for (const col of row) {
-			if (col.selected) {
-				col.occupied = true;
-				col.selected = false;
+		for (const seat of row) {
+			if (seat.selected) {
+				seat.occupied = true;
+				seat.selected = false;
+                const seatEl = document.querySelector(`[data-rowIndex="${seat.row}"][data-colIndex="${seat.col}"]`);
+                seatEl.classList.add("occupied");
+                seatEl.classList.remove("selected");
+                numSelectedSeats--;
 			}
 		}
 	}
-	updateSeats();
+    // updateSeats();
+    showCheckout();
 };
 
 generateSeats();
