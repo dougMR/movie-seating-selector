@@ -54,8 +54,8 @@ select, button {
     display: inline-block;
     margin: 3rem 1rem 0;
     padding: 1rem 0.5rem 3rem;
-    background-color: white;
-    box-shadow: 0 0 1rem 1.5rem white, 0 0 2rem 2rem black;
+    background-color: black;
+    box-shadow: 0 0 1rem 1.5rem black;
     border-top-left-radius: 0.5rem;
     border-top-right-radius: 0.5rem;
 }
@@ -68,18 +68,18 @@ div.row {
     display: inline-block;
     margin: 0;
     padding: 0.1rem;
-    color: black;
+    color: lightgrey;
     cursor: pointer;
     user-select: none;
 }
 .seat:nth-child(3), .seat:nth-child(7) {
-    padding-left: 0.8rem;
+    padding-left: 0.8em;
 }
 .seat.occupied {
-    color: red;
+    color: rgb(216, 0, 0);
 }
 .seat.selected {
-    color: blue;
+    color: greenyellow;
     text-shadow: 0 0 0.5em rgb(192, 228, 255);
 }
 #screen {
