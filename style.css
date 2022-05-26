@@ -1,6 +1,6 @@
 :root {
     --red: rgb(149, 43, 61);
-    --light-blue: rgb(184, 218, 255);
+    --light-blue: rgb(145, 183, 224);
 }
 body, html {
     /* height: 100%; */
@@ -54,8 +54,8 @@ select, button {
     display: inline-block;
     margin: 3rem 1rem 0;
     padding: 1rem 0.5rem 3rem;
-    background-color: black;
-    box-shadow: 0 0 1rem 1.5rem black;
+    background-color: rgba(0,0,0,0.65);
+    box-shadow: 0 0 2rem 1.5rem rgba(0,0,0,0.65);
     border-top-left-radius: 0.5rem;
     border-top-right-radius: 0.5rem;
 }
@@ -68,15 +68,16 @@ div.row {
     display: inline-block;
     margin: 0;
     padding: 0.1rem;
-    color: lightgrey;
+    color: #dfdfdf;
     cursor: pointer;
     user-select: none;
+    text-shadow: 0 0.2em 0 black, 0 -0.2em 0 black, -0.2em 0 0 black, 0.2em 0 0 black;
 }
 .seat:nth-child(3), .seat:nth-child(7) {
     padding-left: 0.8em;
 }
 .seat.occupied {
-    color: rgb(216, 0, 0);
+    color: rgb(210, 52, 52);
 }
 .seat.selected {
     color: greenyellow;
@@ -88,12 +89,30 @@ div.row {
     font-weight: bold;
     letter-spacing: 0.1em;
     text-transform: uppercase;
+    color: var(--light-blue);
+    text-shadow: 0 0.15em 0 white, 0 -0.15em 0 white, -0.15em 0 0 white, 0.15em 0 0 white, 0 0 0.5em white, 0 0 0.5em white, 0 0 0.5em white, 0 0 0.5em white;
     /* border: 3px solid white; */
-    padding: 1rem 8rem;
-    background-color: var(--light-blue);
-    box-shadow: inset 0 0 0.5rem 0.3rem white, 0 -0.1rem 1rem black;
-    color: #333;
+    /* background-color: var(--light-blue); */
+    /* box-shadow: inset 0 0 0.5rem 0.3rem white, 0 -0.1rem 1rem black; */
 }
+
+#screen.trapezoid {
+	border-bottom: 4em solid var(--light-blue);
+	border-left: 25px solid transparent;
+	border-right: 25px solid transparent;
+	height: 0;
+	/* width: 125px; */
+    /* background-color: pink; */
+    text-align: center;
+    vertical-align: middle;
+}
+#screen.trapezoid span {
+	display: inline-block;
+	/* border: 2px solid white; */
+    padding-top: 1em;
+    padding: 1rem 8rem;
+}
+
 #buy-tickets {
     visibility: hidden;
 }
